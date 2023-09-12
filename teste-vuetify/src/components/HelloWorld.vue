@@ -1,12 +1,48 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-center text-center fill-height">
-      <div>Teste Vue</div>
+      <div>v-data-table select-strategy="single"</div>
+      <v-data-table
+        :headers="headers"
+        :items="indicios"
+        class="elevation-1"
+        select-strategy="single"
+        show-select
+        multi-sort
+        :sort-by="[{key: 'nome', order: 'asc'}]"
+        :items-per-page="3"
+      >
+        <template v-slot:item.id="{ item }">
+          <span>{{ item.raw.id }}</span>
+        </template>
+        <template v-slot:item.nome="{ item }">
+          <span>{{ item.raw.nome }}</span>
+        </template>
+      </v-data-table>
+      <div>v-data-table select-strategy="page"</div>
       <v-data-table
         :headers="headers"
         :items="indicios"
         class="elevation-1"
         select-strategy="page"
+        show-select
+        multi-sort
+        :sort-by="[{key: 'nome', order: 'asc'}]"
+        :items-per-page="3"
+      >
+        <template v-slot:item.id="{ item }">
+          <span>{{ item.raw.id }}</span>
+        </template>
+        <template v-slot:item.nome="{ item }">
+          <span>{{ item.raw.nome }}</span>
+        </template>
+      </v-data-table>
+      <div>v-data-table select-strategy="all"</div>
+      <v-data-table
+        :headers="headers"
+        :items="indicios"
+        class="elevation-1"
+        select-strategy="all"
         show-select
         multi-sort
         :sort-by="[{key: 'nome', order: 'asc'}]"
